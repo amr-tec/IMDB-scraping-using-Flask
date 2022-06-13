@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>IMDB search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap.min.css') }}">
+
+</head>
+<style>
+    div {
+        display: flex;
+        justify-content: center;
+    }
+
+    img {
+        width: 177px;
+    }
+
+    .searchBox {
+        font-size: 12px;
+        width: 784px;
+        height: 30px;
+        margin-top: 317px;
+        border-radius: 30PX;
+    }
+
+    .searchButton {
+        width: 63px;
+        height: 34px;
+        margin-top: 319px;
+        margin-right: 171px;
+        margin-left: -63px;
+        border-radius: 30px;
+        BORDER-COLOR: WHITE;
+    }
+</style>
+
+<body style="background-color:black;">
+    <div class="container">
+        <image src="{{url_for('static',filename = 'imdb-logo.jpg')}}">
+    </div>
+    <div>
+        <form action="/succes" method="POST">
+            <input name="movieNumber" type="text" class="searchBox" size="70" id="searchBox"
+                placeholder="   Please enter the number of movies">
+            <button class="searchButton">&#128269</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

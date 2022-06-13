@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <style>
+        div {
+            display: flex;
+            justify-content: center;
+        }
+
+        .items {
+            position: relative;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 26px;
+        }
+
+        #movieDetails {
+            background-color: white;
+            width: 693px;
+            border: 2px solid #080808;
+            padding: 12px;
+            margin-left: 557px;
+        }
+
+        body{
+            background-color: darkgrey;
+        }
+    </style>
+
+    <title>IMDB search results</title>
+    <div style="background-color: black;">
+        <image src="{{url_for('static',filename = 'imdb-logo.jpg')}}">
+    </div>
+</head>
+
+<body>
+
+    <h5 class="heading">Number of movies loaded: {{movieNo}}</h5>
+
+    {% for i in source.findAll('div', class_="lister-item mode-advanced"): %}
+
+    <div class="container" id="movieDetails">
+        <div class="moviebanner">
+            <img src="{{i.find('img',class_='loadlate').get('loadlate')}}" width="67px" height="98px">
+        </div>
+
+        {{i.h3.a.text.strip()}}<br>
+
+        {{i.find('span',attrs={'class':'certificate'}).text}}&nbsp;&nbsp;|{{i.find('span',class_="runtime").text}}&nbsp;&nbsp;|
+        {{i.find('span',class_="genre").text.strip()}}<br>
+        &#11088 {{i.strong.text}} &nbsp;&nbsp;&nbsp;&nbsp; &#10032 &nbsp;Rate This
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {{i.find('div', class="inline-block ratings-metascore").span.text}}&nbsp;Metascore <br><br>
+        {{i.findAll('p',class="text-muted")[1].text}}<br><br>
+        {{i.find('p',class='').text}}<br><br>
+        {{i.find('p',class="sort-num_votes-visible").text}}
+    </div>
+    {%endfor%}
+    
+
+
+
+</body>
+
+</html>
+
+</html>
